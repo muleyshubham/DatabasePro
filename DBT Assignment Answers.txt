@@ -97,4 +97,18 @@ mysql> select distinct customers.city as CITY,customers.canme,salespeople.sname
 +----------+----------+--------+
 8 rows in set (0.05 sec)
 
-
+Q.16)
+Ans:
+mysql> select customers.canme,orders.odate
+    -> from customers inner join orders on customers.cnum=orders.cnum
+    -> where orders.odate='1996-03-10';
++----------+------------+
+| canme    | odate      |
++----------+------------+
+| hoffman  | 1996-03-10 |
+| Liu      | 1996-03-10 |
+| Cisneros | 1996-03-10 |
+| Cisneros | 1996-03-10 |
+| Pereira  | 1996-03-10 |
++----------+------------+
+5 rows in set (0.03 sec)
