@@ -112,3 +112,15 @@ mysql> select customers.canme,orders.odate
 | Pereira  | 1996-03-10 |
 +----------+------------+
 5 rows in set (0.03 sec)
+
+Q.26)
+Ans:
+mysql> select * from customers
+    -> where rating >200;
++------+----------+----------+--------+------+
+| cnum | canme    | city     | rating | snum |
++------+----------+----------+--------+------+
+| 2004 | Grass    | Berlin   |    300 | 1002 |
+| 2008 | Cisneros | San Jose |    300 | 1007 |
++------+----------+----------+--------+------+
+2 rows in set (0.00 sec)
