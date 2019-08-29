@@ -1,0 +1,163 @@
+shows names of columns in a particular table :-
+select column_name from information_schema.columns where table_name='customers';
+
+-----------------------------------------------------------------------------------------------------------
+DBT Assignment :-
+
+
+
+ create table salespeople
+    -> (
+    -> snum int not null,
+    -> sname varchar(20),
+    -> city varchar(20),
+    -> comm decimal(2,2)
+    -> );
+Query OK, 0 rows affected (1.12 sec)
+
+mysql> insert into salespeople values('1001','peel','London','.12');
+Query OK, 1 row affected (0.10 sec)
+
+mysql> insert into salespeople values('1002','Serres','San Jose','.13');
+Query OK, 1 row affected (0.14 sec)
+
+mysql> insert into salespeople values('1004','Motika','London','.15');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> update salespeople
+    -> set comm=.11
+    -> where snum=1004;
+Query OK, 1 row affected (0.08 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> insert into salespeople values('1007','Rifkin','Barcelone','.15');
+Query OK, 1 row affected (0.12 sec)
+
+mysql> insert into salespeople values('1003','AxelRod','New York','.10');
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into salespeople values('1005','Fran','London','.26');
+Query OK, 1 row affected (0.15 sec)
+mysql> select * from salespeople;
++------+---------+-----------+------+
+| snum | sname   | city      | comm |
++------+---------+-----------+------+
+| 1001 | peel    | London    | 0.12 |
+| 1002 | Serres  | San Jose  | 0.13 |
+| 1004 | Motika  | London    | 0.11 |
+| 1007 | Rifkin  | Barcelone | 0.15 |
+| 1003 | AxelRod | New York  | 0.10 |
+| 1005 | Fran    | London    | 0.26 |
++------+---------+-----------+------+
+
+mysql> create table customers
+    -> (
+    -> cnum int,
+    -> canme varchar(20),
+    -> city varchar(20),
+    -> rating int,
+    -> snum int
+    -> );
+Query OK, 0 rows affected (0.78 sec)
+
+mysql> insert into customers values(2001,'hoffman','London','100',1001);
+Query OK, 1 row affected (0.26 sec)
+
+mysql> insert into customers values(2002,'Giovanni','Rome','200',1003);
+Query OK, 1 row affected (0.13 sec)
+
+mysql> insert into customers values(2003,'Liu','San Jose','200',1002);
+Query OK, 1 row affected (0.09 sec)
+
+mysql> insert into customers values(2004,'Grass','Berlin','300',1002);
+Query OK, 1 row affected (0.12 sec)
+
+mysql> insert into customers values(2006,'Clemens','London','100',1001);
+Query OK, 1 row affected (0.09 sec)
+
+mysql> insert into customers values(2008,'Cisneros','San Jose',300,1007);
+Query OK, 1 row affected (0.24 sec)
+
+mysql> insert into customers values(2007,'Pereira','Rome',100,1004);
+Query OK, 1 row affected (0.07 sec)
+
+mysql> select * from customers;
++------+----------+----------+--------+------+
+| cnum | canme    | city     | rating | snum |
++------+----------+----------+--------+------+
+| 2001 | hoffman  | London   |    100 | 1001 |
+| 2002 | Giovanni | Rome     |    200 | 1003 |
+| 2003 | Liu      | San Jose |    200 | 1002 |
+| 2004 | Grass    | Berlin   |    300 | 1002 |
+| 2006 | Clemens  | London   |    100 | 1001 |
+| 2008 | Cisneros | San Jose |    300 | 1007 |
+| 2007 | Pereira  | Rome     |    100 | 1004 |
++------+----------+----------+--------+------+
+7 rows in set (0.00 sec)
+
+mysql> create table orders
+    -> (
+    -> onum int,
+    -> amt decimal(6,2),
+    -> odate date,
+    -> cnum int,
+    -> snum int
+    -> );
+Query OK, 0 rows affected (1.29 sec)
+
+mysql> insert into orders values(3001,18.69,'1996-03-10',2008,1007);
+Query OK, 1 row affected (0.21 sec)
+
+mysql> insert into orders values(3003,767.19,'1996-03-10',2001,1001);
+Query OK, 1 row affected (0.15 sec)
+
+mysql> insert into orders values(3002,1900.10,'1996-03-10',2007,1004);
+Query OK, 1 row affected (0.10 sec)
+
+mysql> insert into orders values(3005,5160.45,'1996-03-10',2003,1002);
+Query OK, 1 row affected (0.14 sec)
+
+mysql> insert into orders values(3006,1098.16,'1996-03-10',2008,1007);
+Query OK, 1 row affected (0.10 sec)
+
+mysql> insert into orders values(3009,1713.23,'1996-04-10',2002,1003);
+Query OK, 1 row affected (0.17 sec)
+
+mysql> insert into orders values(3007,75.75,'1996-04-10',2002,1003);
+Query OK, 1 row affected (0.09 sec)
+
+mysql> insert into orders values(3008,4723.00,'1996-05-10',2006,1001);
+Query OK, 1 row affected (0.12 sec)
+
+mysql> insert into orders values(3010,1309.95,'1996-05-10',2004,1002);
+Query OK, 1 row affected (0.10 sec)
+
+mysql> insert into orders values(3011,9891.88,'1996-06-10',2006,1001);
+Query OK, 1 row affected (0.09 sec)
+
+mysql> update orders
+    -> set date='1996-06-10'
+    -> where amt=1309.95;
+ERROR 1054 (42S22): Unknown column 'date' in 'field list'
+mysql> update orders
+    -> set odate='1996-06-10'
+    -> where amt=1309.95;
+Query OK, 1 row affected (0.10 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from orders;
++------+---------+------------+------+------+
+| onum | amt     | odate      | cnum | snum |
++------+---------+------------+------+------+
+| 3001 |   18.69 | 1996-03-10 | 2008 | 1007 |
+| 3003 |  767.19 | 1996-03-10 | 2001 | 1001 |
+| 3002 | 1900.10 | 1996-03-10 | 2007 | 1004 |
+| 3005 | 5160.45 | 1996-03-10 | 2003 | 1002 |
+| 3006 | 1098.16 | 1996-03-10 | 2008 | 1007 |
+| 3009 | 1713.23 | 1996-04-10 | 2002 | 1003 |
+| 3007 |   75.75 | 1996-04-10 | 2002 | 1003 |
+| 3008 | 4723.00 | 1996-05-10 | 2006 | 1001 |
+| 3010 | 1309.95 | 1996-06-10 | 2004 | 1002 |
+| 3011 | 9891.88 | 1996-06-10 | 2006 | 1001 |
++------+---------+------------+------+------+
+
