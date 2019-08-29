@@ -1,0 +1,82 @@
+
+Q.1)
+ans :
+mysql> select column_name from information_schema.columns where table_name='salespeople';
++-------------+
+| COLUMN_NAME |
++-------------+
+| snum        |
+| sname       |
+| city        |
+| comm        |
++-------------+
+4 rows in set (0.00 sec)
+
+Q.2)
+Ans:
+
+mysql> select * from customers
+    -> where rating=100;
++------+---------+--------+--------+------+
+| cnum | canme   | city   | rating | snum |
++------+---------+--------+--------+------+
+| 2001 | hoffman | London |    100 | 1001 |
+| 2006 | Clemens | London |    100 | 1001 |
+| 2007 | Pereira | Rome   |    100 | 1004 |
++------+---------+--------+--------+------+
+3 rows in set (0.00 sec)
+
+Q.3)
+Ans:
+ysql> select * from customers
+    -> where city=NULL;
+Empty set (0.00 sec)
+
+Q.5)
+Ans:
+mysql> select * from orders
+    -> order by cnum desc;
++------+---------+------------+------+------+
+| onum | amt     | odate      | cnum | snum |
++------+---------+------------+------+------+
+| 3001 |   18.69 | 1996-03-10 | 2008 | 1007 |
+| 3006 | 1098.16 | 1996-03-10 | 2008 | 1007 |
+| 3002 | 1900.10 | 1996-03-10 | 2007 | 1004 |
+| 3008 | 4723.00 | 1996-05-10 | 2006 | 1001 |
+| 3011 | 9891.88 | 1996-06-10 | 2006 | 1001 |
+| 3010 | 1309.95 | 1996-06-10 | 2004 | 1002 |
+| 3005 | 5160.45 | 1996-03-10 | 2003 | 1002 |
+| 3009 | 1713.23 | 1996-04-10 | 2002 | 1003 |
+| 3007 |   75.75 | 1996-04-10 | 2002 | 1003 |
+| 3003 |  767.19 | 1996-03-10 | 2001 | 1001 |
++------+---------+------------+------+------+
+10 rows in set (0.00 sec)
+
+Q.13)
+Ans:
+mysql> select * from customers
+    -> where rating>200;
++------+----------+----------+--------+------+
+| cnum | canme    | city     | rating | snum |
++------+----------+----------+--------+------+
+| 2004 | Grass    | Berlin   |    300 | 1002 |
+| 2008 | Cisneros | San Jose |    300 | 1007 |
++------+----------+----------+--------+------+
+2 rows in set (0.04 sec)
+
+Q.14)
+Ans:
+mysql> select distinct sname,comm from salespeople;
++---------+------+
+| sname   | comm |
++---------+------+
+| peel    | 0.12 |
+| Serres  | 0.13 |
+| Motika  | 0.11 |
+| Rifkin  | 0.15 |
+| AxelRod | 0.10 |
+| Fran    | 0.26 |
++---------+------+
+6 rows in set (0.20 sec)
+
+
