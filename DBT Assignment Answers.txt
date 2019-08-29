@@ -96,3 +96,17 @@ mysql> select distinct customers.city as CITY,customers.canme,salespeople.sname
 | San Jose | Cisneros | Serres |
 +----------+----------+--------+
 8 rows in set (0.05 sec)
+
+Q.14)
+Ans:
+ysql> select sname,comm from salespeople
+    -> where city='London';
++--------+------+
+| sname  | comm |
++--------+------+
+| peel   | 0.12 |
+| Motika | 0.11 |
+| Fran   | 0.26 |
++--------+------+
+3 rows in set (0.01 sec)
+
