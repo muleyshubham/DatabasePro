@@ -79,4 +79,20 @@ mysql> select distinct sname,comm from salespeople;
 +---------+------+
 6 rows in set (0.20 sec)
 
-
+Q.11)
+Ans:
+mysql> select distinct customers.city as CITY,customers.canme,salespeople.sname
+    -> from customers inner join salespeople on customers.city=salespeople.city;
++----------+----------+--------+
+| CITY     | canme    | sname  |
++----------+----------+--------+
+| London   | hoffman  | peel   |
+| London   | hoffman  | Motika |
+| London   | hoffman  | Fran   |
+| San Jose | Liu      | Serres |
+| London   | Clemens  | peel   |
+| London   | Clemens  | Motika |
+| London   | Clemens  | Fran   |
+| San Jose | Cisneros | Serres |
++----------+----------+--------+
+8 rows in set (0.05 sec)
